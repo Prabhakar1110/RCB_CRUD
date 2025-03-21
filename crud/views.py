@@ -57,4 +57,10 @@ def player_delete(request, pk):
     player.delete()
     messages.success(request, f'"{player.name}" deleted successfully!')
     return redirect("crud:player_list")
-        
+
+#create super user
+def create_super(request):
+    if not Player.objects.filter(username="root").exists():
+        Player.objects.create_superuser("root", "", "root")
+        return HttpResponse("Superuser created! Username: root, Password: root")
+    return HttpResponse("Superuser already exists!")
