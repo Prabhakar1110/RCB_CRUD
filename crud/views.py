@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Player
 from .forms import PlayerForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 #Create
 def player_create(request):
@@ -60,7 +61,7 @@ def player_delete(request, pk):
 
 #create super user
 def create_super(request):
-    if not Player.objects.filter(username="root").exists():
-        Player.objects.create_superuser("root", "", "root")
+    if not User.objects.filter(username="root").exists():
+        User.objects.create_superuser("root", "", "root")
         return HttpResponse("Superuser created! Username: root, Password: root")
     return HttpResponse("Superuser already exists!")
