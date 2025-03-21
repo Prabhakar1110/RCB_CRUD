@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Player list{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="text-center">
+		<h2 class="content_headline">Players List</h2>
+	</div>
+	<div class="text-end">
+		<a href="{% url 'crud:player_create' %}" class="custom_btn btn btn-success">Add Player</a>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Primary Key</th>
+				<th>Name</th>
+				<th>Role</th>
+				<th>Country</th>
+				<th>Profile Pic</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for player in all_players %}
+			<tr>
+				<td>{{player.pk}}</td>
+				<td>{{player.name}}</td>
+				<td>{{player.role}}</td>
+				<td>{{player.country}}</td>
+				<td><img class="profile_pic" src="{{player.profile_pic.url}}" alt="{{player.name}}"></td>
+				<td>
+					<a href="" class="btn btn-info">View</a>
+					<a href="{% url 'crud:player_update' pk=player.pk %}" class="btn btn-warning">Update</a>
+					<a href="{% url 'crud:player_delete' pk=player.pk %}" onclick="return confirm('Are you sure you want to delete:{{player.name}}?')" class="btn btn-danger">Delete</a>
+				</td>
+			</tr>
+			{% empty %}
+			<tr class="text-center"><td colspan="6">No Data</td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
