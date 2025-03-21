@@ -1,0 +1,1 @@
+web: gunicorn RCB_CRUD.wsgi --log-file -

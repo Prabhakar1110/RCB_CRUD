@@ -1,0 +1,45 @@
+:root {
+    --theme_color1:#006a99;
+    --theme_color2:white;
+}
+html {
+    font-size: 16px;
+}
+* {
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+.custom_btn {
+    background-color: var(--theme_color1);
+}
+.header, .footer {
+    background-color: var(--theme_color1);
+    height: 10vh;
+}
+.header .rcb_logo {
+    width: 3rem;
+    height: 3rem;
+}
+.header .rcb_name {
+    color: var(--theme_color2);
+}
+.base_content {
+    min-height: 80vh;
+}
+.footer p {
+    color: var(--theme_color2);
+}
+.profile_pic {
+    width: 2rem;
+    height: 2rem;
+}
+.content_headline {
+    display: inline-block;
+    border-bottom: 1px solid gray;
+}
+.messages {
+    position: fixed;
+    bottom: 10vh;
+    left: 0;
+}
